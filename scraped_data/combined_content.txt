@@ -1,0 +1,141 @@
+
+
+Content from https://simpleorigin.us/:
+
+
+
+Cryo Transfer Holders 
+Cryogenic Inert Gas/Vacuum Transfer Holders  
+Variable Temperature Cryo Transfer Holder  
+
+
+
+                                                Simple Origin offers a dedicated Pumping Chamber solution (Model 4xx) for up to two TEM holders.
+                                            
+
+                                                Cryogen Refilling System is a safe and economical solution that helps cryo-microscopists optimize their research by extending the automatic data acquisition time of the electron microscope!
+                                            
+Simple Origin, Inc. is the exclusive distributor for TVIPS cameras in North America.
+
+Answer: The holder has a tip thickness of 1.5mm. It is designed for an alpha tilt of +/- 70 degrees. Please note that the maximum tilt is mainly determined by the pole pieces of your TEM. Please consult with your TEM manufacturer (providing the 1.5mm value for our tip height) and/or Simple Origin for specific information.
+                                    
+
+Answer: Please use an oil-free pumping system that includes a turbo pump. A desired dewar vacuum is in the low 10-6 torr range. It is usually recommended to pump the dewar overnight before using it. The activated charcoal regeneration is required less often and should be typically performed once per week to once per month (in case the dewar is vented accidentally, longer pumping and multiple activated charcoal regeneration is required). A clear indication of required pumping and/or activated charcoal regeneration is noticeable condensation on the outer dewar surface.
+                                    
+
+Answer: Our Dual Grid/Autogrid Cryo Transfer Holders are designed to achieve steady state drift values below 3 nm/min with a resolution better than 2 Ã during regular operations.It is important to note that drift and resolutions are dependent on various parameters such as TEM performance, objective lens, sample, and camera conditions. The overall baseline reference for the achievable values is usually set by the performance of the TEMs standard single tilt holder at room temperature.
+                                    
+
+Answer: The Dual Grid/Autogrid Cryo Transfer Holder has a steady state holding time of ~10 hrs. Our cryo holders work seamlessly with the Cryogen Refilling System that allows for extended automatic data acquisition time of up to ~48 hrs.
+                                    
+
+Answer: The workstation is typically filled with liquid Nitrogen up to the holder Tip. The Tip is surrounded by cold nitrogen gas during sample loading.
+                                    
+
+Answer: In the Dual Grid/Autogrid Cryo Transfer Holder we use a calibrated silicon diode that is located ~25 mm away from the sample position.
+                                    
+
+Answer: We usually achieve transfer temperature < -175Â°C. This is well sufficient to prevent recrystallization of amorphous ice.
+                                    
+
+Answer: Typical steady state tip temperatures are below -175Â°C.
+                                    
+
+Answer: It takes 15-30 minutes to achieve temperatures below -175Â°C independent of tip extraction. Allowing enough time for that cool down process is recommended to maintain good sample quality.
+                                    
+
+Answer: It is recommended to store the holder under vacuum on the pumping station.
+                                    
+
+Answer: To warm up the workstation and the Dual Grid/Autogrid Cryo Transfer Holder it is recommended to:
+                                        
+Pour out the liquid Nitrogen from the workstation and the holder dewar
+Switch on the workstation built-in heater. (A hair dryer can be useful to speed up the process)
+Connect the controller to the holder and begin the warm-up cycle.
+Flowing dry nitrogen gas in the workstation and holder dewar helps keep the moisture out
+If the holder is on the pumping station it can be positioned upside down with the dewar opening facing downwards
+
+                                        Before using the workstation/holder again, please make sure that they are completely dry.
+                                    
+
+Answer: Using appropriate plasma cleaners enables the removal of hydrocarbons from the holder tip.
+                                    
+
+Answer: Place the CRYOGENIC INERT GAS/VACUUM TRANSFER HOLDER in a glove box that is either evacuated or filled with an inert gas such as Argon. Load the sample in the glove box. Once the sample is loaded into the holder, retract the holder tip into the barrel. This seals the sample in the inert gas or vacuum environment with the help of the O-ring on the tip. Transfer the holder to the TEM and place it in the TEMs pre-pump position. Extract the holder tip and wait till the argon gas is pumped out. Insert the holder completely into the TEM Column and then cool it.
+                                    
+
+Answer: Having the O-ring on the tip makes it easier to inspect it and replace it if required.
+                                    
+
+Answer: Usually an inert gas is preferred in terms of maintaining a non-oxidizing atmosphere around the sample for an elongated time period. Due to the pressure differential, the use of vacuum reduces the duration for which the sample is protected.
+                                    
+
+Answer: After loading the sample in an inert gas atmosphere within the glove box, you can cool the holder in the TEMs pre-pump position with the sample tip sealed in the retracted position in the presence of the inert gas. You can extract the tip once the sample is cold and then insert the holder into the TEM column.
+                                    
+
+Answer: Please contact us to discuss your application- support@simpleorigin.us
+                                    
+
+Answer: The holder is designed to make this process user friendly. For convenience, the sample clamp can be opened outside the glove box. Closing the clamp is assisted by a moveable bar. After inserting the grid in the holder, simply flip the clamp over using a tweezer and then move the bar over the clamp and press down with your finger or a tool.
+                                    
+
+
+Answer: The pump down time may vary based on the type of inert gas used. It is recommended to discuss the specific gas with the TEM manufacturer so that they can install the appropriate pump.
+                                    
+
+Answer: Heating from -160Â°C to -150Â°C takes just a few seconds. Allow a few minutes for stable temperature
+                                        regulation (to minimize specimen drift).
+                                    
+
+Answer:Yes. The design of the clamp and the required tools are identical.
+                                    
+
+Answer:
+
+The Cryogen Refilling system has been successfully installed on FEI TF20, TF30, T12, Talos F200C & Titan TEMâs and JEM 2200 TEM.
+It is also compatible with FEI CM200 & CM300 TEMâs and JEM 2100 & JEM1400 TEMâs.
+
+
+
+Answer: The refilling system dewar is 10 liters. You can get up to 48 hrs of unattended data collection using the system.
+                                        
+
+Answer: We have a patented sensor for the cryo specimen holder dewar as well as the ACD (cryo trap) dewar. This sensor detects the liquid nitrogen level during refills and closes the valves to prevent liquid nitrogen from overflowing during refills.
+                                        
+
+Answer: Yes, we make the sensor for all the commercially available cryo sample holders.
+                                        
+
+Answer: Yes, the refilling system can fill both the holder and the ACD dewar. This selection can be made in the user interface. The GUI has an option for the user to select each dewar independently for refills.
+                                        
+
+Answer: Presently, the system is integrated with TVIPS data collection software EM-Menu. We are working on integrating it with Serial-EM in the near future.
+                                        
+
+Answer: The system communicates with the camera/TEM PC and continuously writes the system parameters to the windows registry. These can be used to monitor and start/stop the system remotely.
+                                        
+
+Answer: Users usually refill the Gatan 626 holder every 3 hrs and it takes about a minute to fill it.
+                                        
+
+Answer: The system is designed by keeping in mind the complete data collection process. Some of the safety features include:
+                                            
+The system can detect if the holder is present and will stop the refill operation if there is a missing holder.
+The system will not refill in case of communication error from the sensor.
+The system cryo valves will close in case of power failure or loss of control gas pressure.
+
+
+
+                                        At Simple Origin, our team is motivated to solve engineering challenges using innovative solutions. Our mission is to collaborate with scientists to identify and develop next generation research instruments.
+                                    
+p.deshmukh@simpleorigin.us
+
+                                        Join our team and make a difference.We are hiring for these positions.
+
+
+
+
+
+
+
+
