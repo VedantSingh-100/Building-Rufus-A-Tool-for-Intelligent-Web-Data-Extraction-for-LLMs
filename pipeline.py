@@ -16,35 +16,26 @@ from faiss_integration import build_faiss_index, search_faiss_index, cross_encod
 from scraping_functions import preprocess_and_chunk, extract_important_sentences_from_candidates
 COMBINED_FILE = 'scraped_data/combined_content.txt'
 PREPROCESSED_FILE = 'scraped_data/cleaned_content.txt'
-USER_QUERY = "Tell me the FAQ about this company"
 
-# === Model Initialization and Configuration ===
+# Initialize models once
 relevance_model = SentenceTransformer('all-MiniLM-L6-v2')
-USER_QUERY = "Tell me the FAQ about this company"
-QUERY_EMBEDDING = relevance_model.encode(USER_QUERY, convert_to_tensor=True)
-
 cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
-
-# This text2text generation model is used to synthesize an answer.
 qa_pipeline = pipeline("text2text-generation", model="t5-base", tokenizer="t5-base")
 
-# Relevance threshold for initial candidate scoring.
 RELEVANCE_THRESHOLD = 0.75
 
-# This model is used for computing similarity between passages and the query.
-
-# Directory and file for saving scraped content.
+# Ensure output directory exists
 if not os.path.exists('scraped_data'):
     os.makedirs('scraped_data')
-combined_file = 'scraped_data/combined_content.txt'
-preprocessed_file = 'scraped_data/cleaned_content.txt'
-QUERY_EMBEDDING = relevance_model.encode(USER_QUERY, convert_to_tensor=True)
 
-def extract_candidate_paragraphs(input_file=preprocessed_file, batch_size=64):
+def extract_candidate_paragraphs(input_file=PREPROCESSED_FILE, batch_size=64, query_embedding=None):
     """
-    Reads the preprocessed file (one chunk per line), batch-embeds them,
-    computes similarity with QUERY_EMBEDDING, and returns candidate passages.
+    Reads the preprocessed file, batch-embeds them, computes similarity with query_embedding,
+    and returns candidate passages.
     """
+    if query_embedding is None:
+        raise ValueError("query_embedding must be provided.")
+    
     if not os.path.exists(input_file):
         print(f"Input file {input_file} not found.")
         return []
@@ -56,8 +47,8 @@ def extract_candidate_paragraphs(input_file=preprocessed_file, batch_size=64):
     # Batch compute embeddings for all chunks.
     embeddings = relevance_model.encode(chunks, convert_to_tensor=True, batch_size=batch_size)
     
-    # Compute cosine similarities between each chunk and the query.
-    cosine_scores = util.pytorch_cos_sim(embeddings, QUERY_EMBEDDING)  # shape: (n, 1)
+    # Compute cosine similarities between each chunk and the query_embedding.
+    cosine_scores = util.pytorch_cos_sim(embeddings, query_embedding)  # Use the passed query_embedding
     
     candidates = []
     for chunk, score in zip(chunks, cosine_scores):
@@ -68,11 +59,14 @@ def extract_candidate_paragraphs(input_file=preprocessed_file, batch_size=64):
         })
     return candidates
 
+
 # === Main Pipeline ===
 
-def run_pipeline():
+def run_pipeline_with_url(url: str, instructions: str = None) -> dict:
     # --- Step 0: Setup and Initialization ---
-    urls = {"sf_gove": "https://simpleorigin.us/"}
+    USER_QUERY = instructions if instructions else "Default Query"
+    urls = {"custom": url}
+    query_embedding = relevance_model.encode(USER_QUERY, convert_to_tensor=True)
     
     # Clear previous data if files are used (or use in-memory strings)
     if os.path.exists(COMBINED_FILE):
@@ -85,10 +79,6 @@ def run_pipeline():
         domain = urlparse(url).netloc
         scrape_subpages(url, domain, level=0, max_depth=1)
     
-    # --- Step 2: Preprocess and Chunk ---
-    # Option 1: If you refactor preprocess_and_chunk to return chunks
-    # chunks = preprocess_and_chunk_content(combined_content)
-    # Option 2: If you must work with files, call the function and then read the file.
     if os.path.exists(PREPROCESSED_FILE):
         with open(PREPROCESSED_FILE, 'w', encoding='utf-8') as file:
             file.write("")
@@ -99,7 +89,7 @@ def run_pipeline():
         chunks = [line.strip() for line in f.readlines() if line.strip()]
     
     # --- Step 3: Extract Candidate Paragraphs ---
-    candidates = extract_candidate_paragraphs(input_file=PREPROCESSED_FILE, batch_size=64)
+    candidates = extract_candidate_paragraphs(input_file=PREPROCESSED_FILE, batch_size=64, query_embedding=query_embedding)
     if not candidates:
         return {"error": "No candidate paragraphs found."}
     
@@ -110,7 +100,7 @@ def run_pipeline():
     index = build_faiss_index(embeddings)
     
     # --- Step 4: Initial FAISS Retrieval ---
-    D, I = search_faiss_index(index, QUERY_EMBEDDING, top_k=5)
+    D, I = search_faiss_index(index, query_embedding, top_k=5)
     faiss_candidates = []
     for score, idx in zip(D[0], I[0]):
         candidate = {
@@ -176,9 +166,3 @@ def run_pipeline():
 
     result = generate_structured_json_answer(USER_QUERY, answer, top_passages)
     return result
-
-
-if __name__ == "__main__":
-    # For testing purposes, print the result.
-    result = run_pipeline()
-    print(json.dumps(result, indent=4))
