@@ -54,5 +54,5 @@ This project implements an advanced, AI-powered pipeline that:
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone https://github.com/VedantSingh-100/Building-Rufus-A-Tool-for-Intelligent-Web-Data-Extraction-for-LLMs
+   cd Building-Rufus-A-Tool-for-Intelligent-Web-Data-Extraction-for-LLMs
